@@ -989,90 +989,89 @@ About Us Style
 Services Style
 --------------------------------------------- 
 */
-
 .our-services {
-  margin-top: 0px;
+  margin-top: 0;
   padding-top: 120px;
+  background-color: #f8f9fa; /* Optional: Add a light background for better visibility */
 }
 
+/* Left Image Styling */
 .our-services .left-image {
   margin-right: 45px;
+  text-align: center;
 }
 
+.our-services .left-image img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+/* Section Heading */
 .our-services .section-heading h2 {
-  margin-right: 100px;
+  font-size: 28px;
+  font-weight: 700;
+  color: #2a2a2a;
+  margin-bottom: 20px;
 }
 
 .our-services .section-heading p {
-  margin-top: 30px;
-  margin-bottom: 60px;
+  font-size: 16px;
+  color: #5a5a5a;
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
 
+/* Progress Bar Container */
 .our-services .progress-skill-bar {
   margin-bottom: 30px;
   position: relative;
   width: 100%;
 }
 
+/* Progress Bar Labels */
+.our-services .progress-skill-bar h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2a2a2a;
+  margin-bottom: 10px;
+}
+
 .our-services .progress-skill-bar span {
   position: absolute;
-  top: 0;
-  font-size: 18px;
+  top: -25px; /* Adjust percentage label above the bar */
+  right: 0; /* Align percentage to the right */
+  font-size: 16px;
   font-weight: 600;
   color: #03a4ed;
 }
 
-.our-services .first-bar span {
-  left: 69%;
-}
-
-.our-services .second-bar span {
-  left: 81%;
-}
-
-.our-services .third-bar span {
-  left: 88%;
-}
-
-.our-services .progress-skill-bar h4 {
-  font-size: 18px;
-  font-weight: 700;
-  color: #2a2a2a;
-  margin-bottom: 14px;
-}
-
+/* Full Bar (Background) */
 .our-services .progress-skill-bar .full-bar {
   width: 100%;
   height: 6px;
   border-radius: 3px;
-  background-color: #f7eff1;
-  position: relative;
-  z-index: 1;
+  background-color: #f1f1f1; /* Light gray background */
 }
 
+/* Filled Bar (Progress) */
 .our-services .progress-skill-bar .filled-bar {
-  background: rgb(255,77,30);
-  background: linear-gradient(105deg, rgba(255,77,30,1) 0%, rgba(255,44,109,1) 100%);
   height: 6px;
   border-radius: 3px;
-  margin-bottom: -6px;
-  position: relative;
-  z-index: 2;
+  background-image: linear-gradient(105deg, rgba(255,77,30,1) 0%, rgba(255,44,109,1) 100%);
 }
 
+/* Specific Progress Bar Widths */
 .our-services .first-bar .filled-bar {
-  width: 50%;
+  width: 50%; /* Adjust based on percentage */
 }
 
 .our-services .second-bar .filled-bar {
-  width: 90%;
+  width: 90%; /* Adjust based on percentage */
 }
 
 .our-services .third-bar .filled-bar {
-  width: 0.05%;
+  width: 5%; /* Adjust based on percentage (0.05%) */
 }
-
-
 /* 
 ---------------------------------------------
 Portfolio
@@ -1590,4 +1589,61 @@ responsive
   .phone-info h4 span i {
     margin-left: 0px;
   }
+}
+/* 
+---------------------------------------------
+Grid Layout
+--------------------------------------------- 
+*/
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #E6F0FF;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  padding: 20px; /* Adjusted to avoid excessive padding */
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #1A2B6B;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #5A6B8C;
+  margin-bottom: 30px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card i {
+  font-size: 30px;
+  color: #4C6EF5;
+  margin-bottom: 10px;
+}
+
+.card h3 {
+  font-size: 1.2rem;
+  color: #1A2B6B;
+}
+
+.card p {
+  font-size: 0.9rem;
+  color: #5A6B8C;
 }
