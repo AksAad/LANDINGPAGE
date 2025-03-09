@@ -1061,15 +1061,15 @@ Services Style
 }
 
 .our-services .first-bar .filled-bar {
-  width: 71%;
+  width: 50%;
 }
 
 .our-services .second-bar .filled-bar {
-  width: 83%;
+  width: 90%;
 }
 
 .our-services .third-bar .filled-bar {
-  width: 90%;
+  width: 0.05%;
 }
 
 
