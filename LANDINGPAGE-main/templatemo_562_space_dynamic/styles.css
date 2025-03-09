@@ -1,0 +1,109 @@
+/* Custom styles */
+.max-w-md {
+  max-width: 28rem;
+}
+
+.space-y-4 > * + * {
+  margin-top: 1rem;
+}
+
+.social-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.grid-cols-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.gap-2 {
+  gap: 0.5rem;
+}
+
+/* Custom button styles */
+.btn-primary {
+  background-color: #0070f3;
+  border-color: #0070f3;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #0060df;
+  border-color: #0060df;
+}
+
+.btn-outline-primary {
+  color: #0070f3;
+  border-color: #0070f3;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+  background-color: #0070f3;
+  color: white;
+}
+
+/* Role button styles */
+.role-btn {
+  transition: all 0.2s ease;
+}
+
+/* Card shadow */
+.shadow-lg {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Dark mode support */
+.dark {
+  background-color: #121212;
+  color: #e5e5e5;
+}
+
+.dark .card {
+  background-color: #1e1e1e;
+  border-color: #333;
+}
+
+.dark .text-muted {
+  color: #aaa !important;
+}
+
+.dark .btn-outline-secondary {
+  color: #ddd;
+  border-color: #666;
+}
+
+.dark .btn-outline-secondary:hover {
+  background-color: #333;
+  color: white;
+}
+
+.dark .form-control {
+  background-color: #333;
+  border-color: #666;
+  color: #fff;
+}
+
+.dark .nav-tabs .nav-link {
+  color: #ddd;
+}
+
+.dark .nav-tabs .nav-link.active {
+  background-color: #1e1e1e;
+  color: #fff;
+  border-color: #666 #666 #1e1e1e;
+}
+
+.dark hr {
+  border-color: #666;
+}
+
+.dark .position-absolute.top-50.start-50.translate-middle {
+  background-color: #1e1e1e !important;
+}
+
+.dark .bg-light {
+  background-color: #121212 !important;
+}
+
