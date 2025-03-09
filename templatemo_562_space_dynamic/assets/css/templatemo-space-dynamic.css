@@ -1428,6 +1428,22 @@ footer p {
 footer p a {
   color: #fe3f40;
 }
+.logo-section img {
+  width: 350px; /* Adjust as needed */
+  height: auto;
+  max-width: none; /* Ensure it doesn’t shrink */
+}
+
+
+.logo-section {
+  display: flex;
+  align-items: center;
+}
+
+
+.logo-section img {
+  max-height: 80px; /* Prevents excessive shrinking */
+}
 
 /* 
 ---------------------------------------------
