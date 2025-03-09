@@ -401,87 +401,91 @@ https://templatemo.com/tm-562-space-dynamic
       </div>
     </div>
   </div>
-
- <footer>
-    <div class="footer-container">
-        <div class="logo-section">
-            <img src="logo.png" alt="SynergySwipe Logo">
-            <p>Significantly enhance your connecting with your peers.</p>
-        </div>
-        <div class="links-section">
-            <ul>
-                <li><strong>Product</strong></li>
-                <li><a href="#">Features</a></li>
-                <li><a href="#">Pricing</a></li>
-                <li><a href="#">Use case</a></li>
-                <li><a href="#">About</a></li>
-            </ul>
-        </div>
-        <div class="links-section">
-            <ul>
-                <li><strong>Resources</strong></li>
-                <li><a href="#">The Swipe</a></li>
-                <li><a href="#">IgniteX</a></li>
-                <li><a href="#">Invest</a></li>
-                <li><a href="#">Integrations</a></li>
-                <li><a href="#">Careers</a></li>
-            </ul>
-        </div>
-        <div class="links-section">
-            <ul>
-                <li><strong>Company</strong></li>
-                <li><a href="#">Our Story</a></li>
-                <li><a href="#">Our Team</a></li>
-                <li><a href="#">Pricing</a></li>
-                <li><a href="#">Contact Us</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>SynergySwipe &bull; <a href="#">Terms of service</a> | <a href="#">Privacy policy</a></p>
-    </div>
-</footer>
-
+<!-- Footer -->
 <style>
-    footer {
-        background: #f8f9fc;
-        padding: 40px 60px;
-        font-family: inherit;
-    }
-    .footer-container {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-    }
-    .logo-section {
-        max-width: 250px;
-    }
-    .logo-section img {
-        width: 50px;
-        margin-bottom: 10px;
-    }
-    .links-section ul {
-        list-style: none;
-        padding: 0;
-    }
-    .links-section li {
-        margin-bottom: 8px;
-    }
-    .links-section a {
-        text-decoration: none;
-        color: #2d2f7a;
-        font-weight: bold;
-    }
-    .footer-bottom {
-        text-align: center;
-        margin-top: 20px;
-        font-size: 14px;
-    }
-    .footer-bottom a {
-        text-decoration: none;
-        color: #6c757d;
-    }
-</style>
+        footer {
+            background-color: #fff; /* Ensure no blue background */
+            padding: 40px 60px;
+            font-family: inherit;
+        }
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .logo-section {
+            text-align: center;
+            max-width: 250px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .logo-section img {
+            width: 150px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .logo-section p {
+            margin-top: 10px;
+            text-align: center;
+        }
+        .links, .resources, .company {
+            text-align: left;
+        }
+        .footer-bottom {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .footer-bottom a {
+            text-decoration: none;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <footer>
+        <div class="footer-container">
+            <div class="logo-section">
+                <img src="assets/images/logo.png" alt="SynergySwipe Logo" style="width: 350px; height: auto;">
+                <p>Significantly enhance your connecting with your peers.</p>
+            </div>
+            <div class="links">
+                <h4>General</h4>
+                <ul>
+                    <li><a href="#">Product</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Use case</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </div>
+            <div class="resources">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">The Swipe</a></li>
+                    <li><a href="#">IgniteX</a></li>
+                    <li><a href="#">Invest</a></li>
+                    <li><a href="#">Integrations</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            <div class="company">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Our Team</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>SynergySwipe &bull; <a href="#">Terms of service</a> <a href="#">Privacy policy</a></p>
+        </div>
+    </footer>
+
+
 
   <!-- Scripts -->
   <script src="vendor/jquery/jquery.min.js"></script>
