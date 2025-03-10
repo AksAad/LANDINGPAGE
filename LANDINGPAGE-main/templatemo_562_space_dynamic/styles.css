@@ -1,9 +1,21 @@
 /* Custom styles */
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom right, #D506B6, #6DA8D3, #00EBCC);
+  z-index: -1;
+}
+
 .max-w-md {
   max-width: 28rem;
 }
 
-.space-y-4 > * + * {
+.space-y-4>*+* {
   margin-top: 1rem;
 }
 
@@ -41,12 +53,38 @@
 .btn-outline-primary:hover,
 .btn-outline-primary:focus {
   background-color: #0070f3;
-  color: white;
+  color: #ffffff;
 }
 
 /* Role button styles */
 .role-btn {
   transition: all 0.2s ease;
+  color: #0070f3;
+  /* Primary Color */
+  border-color: #0070f3;
+  /* Primary Color */
+  background-color: transparent;
+  /* Make sure it's transparent */
+}
+
+/* Ensure Role Buttons are Initially Correct */
+.role-btn.btn-primary {
+  color: #fff;
+  /* White text when active */
+  background-color: #0070f3;
+  /* Blue background when active */
+  border-color: #0070f3;
+  /* Match border to background */
+}
+
+.role-btn:not(.btn-primary):hover {
+  color: #fff;
+  background-color: #0060df;
+  border-color: #0060df;
+}
+
+.logosyn {
+  background-color: #121212;
 }
 
 /* Card shadow */
@@ -57,7 +95,7 @@
 /* Dark mode support */
 .dark {
   background-color: #121212;
-  color: #e5e5e5;
+  color: #ffffff;
 }
 
 .dark .card {
@@ -76,13 +114,13 @@
 
 .dark .btn-outline-secondary:hover {
   background-color: #333;
-  color: white;
+  color: #ffffff;
 }
 
 .dark .form-control {
   background-color: #333;
   border-color: #666;
-  color: #fff;
+  color: #ffffff;
 }
 
 .dark .nav-tabs .nav-link {
@@ -91,7 +129,7 @@
 
 .dark .nav-tabs .nav-link.active {
   background-color: #1e1e1e;
-  color: #fff;
+  color: #ffffff;
   border-color: #666 #666 #1e1e1e;
 }
 
@@ -107,3 +145,307 @@
   background-color: #121212 !important;
 }
 
+/*new*/
+/* Custom styles to enhance layout */
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+}
+
+.card {
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  background-color: #f0f8ff;
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+.list-group-item {
+  border-radius: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.list-group-item:hover {
+  transform: scale(1.01);
+}
+
+.list-group-item .mb-1 {
+  font-weight: bold;
+}
+
+.card-footer {
+  background-color: #f0f8ff;
+  padding: 1rem;
+  border-top: 1px solid #ddd;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+
+  .row {
+      flex-direction: column;
+  }
+
+  .col-lg-8,
+  .col-lg-4 {
+      margin-bottom: 20px;
+  }
+}
+
+/* Styles for project listings */
+.project-post {
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.project-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.project-description {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tag {
+  display: inline-block;
+  background-color: #e5e5e5;
+  color: #333;
+  padding: 0.3rem 0.6rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+}
+
+.project-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project-footer button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #0070f3;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.project-footer button:hover {
+  background-color: #0060df;
+}
+
+/* Responsive Design Adjustments */
+@media (max-width: 768px) {
+
+  .row {
+      flex-direction: column;
+      /* Stack columns vertically on smaller screens */
+      gap: 1rem;
+  }
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+  color: #343a40;
+}
+
+.navbar {
+  background-color: #007bff !important;
+  /* Keep Navbar Color */
+}
+
+.navbar-brand {
+  color: #ffffff !important;
+  font-weight: bold;
+}
+
+.navbar-brand .fw-bold {
+  color: #ffffff !important;
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.8) !important;
+  padding: 0.75rem 1rem !important;
+}
+
+.nav-link:hover {
+  color: #ffffff !important;
+}
+
+.nav-link.active {
+  color: #ffffff !important;
+  font-weight: 500;
+}
+
+.dropdown-menu {
+  border: none;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.dropdown-item {
+  color: #495057;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+  color: #007bff;
+}
+
+.form-control {
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+}
+
+.btn-light {
+  background-color: #e9ecef;
+  border-color: #ced4da;
+  color: #495057;
+}
+
+.btn-light:hover {
+  background-color: #d0d3d6;
+  border-color: #b1b6ba;
+  color: #495057;
+}
+
+.card {
+  border: none;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  border-radius: 0.5rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Apply hover animation only to these cards */
+.container>.row>.col-md-4>.card:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease-in-out;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  color: #495057;
+}
+
+.display-4 {
+  font-size: 3rem;
+  font-weight: 300;
+  color: #343a40;
+}
+
+.list-group-item {
+  border: none;
+  border-bottom: 1px solid #e9ecef;
+  padding: 1rem 0;
+}
+
+.list-group-item:last-child {
+  border-bottom: none;
+}
+
+.project-post {
+  padding: 1rem;
+}
+
+.project-header {
+  margin-bottom: 0.5rem;
+}
+
+.project-title {
+  font-size: 1rem;
+  color: #343a40;
+}
+
+.project-description {
+  color: #6c757d;
+  margin-bottom: 0.5rem;
+}
+
+.project-tags {
+  margin-bottom: 0.5rem;
+}
+
+.tag {
+  display: inline-block;
+  background-color: #e9ecef;
+  color: #495057;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.2rem;
+  margin-right: 0.25rem;
+  font-size: 0.75rem;
+}
+
+.project-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.875rem;
+  color: #6c757d;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: #0069d9;
+  border-color: #0062cc;
+}
+
+.text-muted {
+  font-size: 0.75rem;
+}
+
+/* Fix for Clipping Text in Recent Activity */
+.list-group-item p {
+  margin-left: 10px;
+  /* Add padding to the left */
+  word-break: break-word;
+  /* Prevents long words from overflowing */
+}
+
+/* Add padding to the time in Recent Activity */
+.list-group-item .text-muted {
+  padding-left: 10px;
+}
+
+/*this was not present*/
+.container h1 {
+  color: white;
+}
