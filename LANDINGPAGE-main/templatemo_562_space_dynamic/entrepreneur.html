@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrepreneur Dashboard - SynergySwipe</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles.css">
+    <!-- Main styles -->
+    <link rel="stylesheet" href="entrepreneur.css">
+    <!-- Entrepreneur-specific styles -->
+    <link rel="icon" type="image/png" href="../assets/images/logofav.png">
+
+</head>
+
+<body class="entrepreneur-dashboard">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">Synergy<span class="fw-bold">Swipe</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" id="ideaLink">Add Idea</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Account</a></li>
+
+                     <!-- Notification Dropdown -->
+                     <li class="nav-item dropdown me-3">
+                            <a class="nav-link dropdown-toggle" href="#" id="notificationDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-bell"></i>
+                                <span class="badge bg-danger rounded-pill">3</span> <!-- Notification count -->
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notificationDropdown">
+                                <li><a class="dropdown-item" href="#">New message from Developer 1</a></li>
+                                <li><a class="dropdown-item" href="#">Your idea got 10 likes</a></li>
+                                <li><a class="dropdown-item" href="#">New collaboration request</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Chat Option -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-comments"></i> <!-- Chat icon -->
+                            </a>
+                        </li>
+
+                    <li class="nav-item"><a class="nav-link" href="#">Log Out</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-5">
+        <h1 class="mb-4" style="color:white;">Your Entrepreneur Dashboard</h1>
+
+        <!-- Idea Submission Section -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Your Idea</h5>
+                <p class="card-text" id="ideaStatus">Please add your idea to get started!</p>
+                <!-- Idea Details will be dynamically loaded here -->
+            </div>
+        </div>
+
+        <!-- Views, Likes, etc. -->
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Views</h5>
+                        <p class="card-text display-4" id="views">0</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Likes</h5>
+                        <p class="card-text display-4" id="likes">0</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Shares</h5>
+                        <p class="card-text display-4" id="shares">0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Collaborators -->
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title">Potential Collaborators</h5>
+                <p class="card-text">See who is interested in collaborating.</p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Developer 1</li>
+                    <li class="list-group-item">Investor 1</li>
+                    <!-- More collaborators here -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Check if an idea exists
+            const idea = localStorage.getItem("idea");
+
+            // Update UI based on whether there's an idea
+            const ideaLink = document.getElementById("ideaLink");
+            const ideaStatus = document.getElementById("ideaStatus");
+            const views = document.getElementById("views")
+            const likes = document.getElementById("likes")
+            const shares = document.getElementById("shares")
+
+
+            if (idea) {
+                ideaLink.textContent = "Review Idea";
+                ideaStatus.textContent = idea;
+                views.textContent = "120";
+                likes.textContent = "30";
+                shares.textContent = "30";
+            } else {
+                ideaLink.textContent = "Add Idea";
+                ideaStatus.textContent = "Please add your idea to get started!";
+            }
+
+            // Handle Idea Link Click
+            ideaLink.addEventListener("click", function(e) {
+                e.preventDefault();
+                if (idea) {
+                    // If there's an idea, go to review page
+                    window.location.href = "review-idea.html";
+                } else {
+                    // If there's no idea, go to add idea page
+                    window.location.href = "add-idea.html";
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

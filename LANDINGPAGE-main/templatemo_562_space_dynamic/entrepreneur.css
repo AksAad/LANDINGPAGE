@@ -1,0 +1,62 @@
+.entrepreneur-dashboard .card {
+    transition: transform 0.3s ease-in-out;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    border: none;
+}
+
+.entrepreneur-dashboard .card:hover {
+    transform: scale(1.05);
+}
+
+.entrepreneur-dashboard .card-body {
+    padding: 1.5rem;
+}
+
+.entrepreneur-dashboard .card-title {
+    font-size: 1.25rem;
+    color: #495057;
+    margin-bottom: 0.75rem;
+}
+
+.entrepreneur-dashboard .display-4 {
+    font-size: 3rem;
+    font-weight: 300;
+    color: #343a40;
+}
+/* Custom styles for notification dropdown and chat */
+.navbar-nav .nav-item.dropdown .dropdown-toggle {
+    position: relative;
+}
+
+.navbar-nav .nav-item.dropdown .badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+}
+
+.navbar-nav .nav-item.dropdown .dropdown-menu {
+    min-width: 250px; /* Adjust dropdown width */
+}
+
+.navbar-nav .nav-item.dropdown .dropdown-menu .dropdown-item {
+    white-space: normal; /* Allow text wrapping */
+}
+
+.navbar-nav .nav-link i {
+    font-size: 1.2rem; /* Adjust icon size */
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom right, #D506B6, #6DA8D3, #00EBCC);
+    z-index: -1;
+  }
