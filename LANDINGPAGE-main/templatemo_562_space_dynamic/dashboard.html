@@ -1,138 +1,524 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Employee Dashboard - SynergySwipe</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Dashboard - SynergySwipe</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="assets/images/logofav.png">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Add this to your styles.css or within <style> tags in your HTML */
+        /* Overlay background */
+        .search-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Translucent black */
+            z-index: 1000;
+            /* Ensure it's on top */
+            display: none;
+            /* Initially hidden */
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Search box styles */
+        .search-box {
+            background-color: #2c3e50;
+            /* Dark blue background */
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 80%;
+            max-width: 500px;
+            /* Adjust as needed */
+            position: relative;
+        }
+
+        #search-input-modal {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #34495e;
+            /* Slightly lighter blue */
+            color: white;
+        }
+
+        /* Close button style */
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        /* Remove the arrow */
+        .user-dropdown .dropdown-toggle::after {
+            content: none;
+        }
+
+        .user-dropdown .profile-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            cursor: pointer;
+        }
+    </style>
 </head>
+
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container">
-      <a class="navbar-brand" href="#">Synergy<span class="fw-bold">Swipe</span></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active" href="#">Dashboard</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Job Listings</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Messages</a></li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">My Account</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Profile</a></li>
-              <li><a class="dropdown-item" href="#">Settings</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Logout</a></li>
-            </ul>
-          </li>
-        </ul>
-        <form class="d-flex ms-3">
-          <input class="form-control me-2" type="search" placeholder="Search jobs...">
-          <button class="btn btn-light" type="submit">Search</button>
-        </form>
-      </div>
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-box">
+            <button class="close-button" id="closeSearch"><i class="fas fa-times"></i></button>
+            <input type="search" class="form-control" id="search-input-modal" placeholder="Search SynergySwipe...">
+            <!-- Optional: Add a hint -->
+            <p style="color:white; margin-top: 10px;">Hint: Want more advanced searching? Try the Job Listings page</p>
+        </div>
     </div>
-  </nav>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">Synergy<span class="fw-bold">Swipe</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Job Listings</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Messages</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Analytics</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Ideation</a></li>
+                </ul>
 
-  <div class="container py-5">
-    <h1 class="mb-4">Employee Dashboard</h1>
-    <div class="row mb-4">
-      <div class="col-md-4">
-        <div class="card bg-primary text-white">
-          <div class="card-body">
-            <h5 class="card-title">Applied Jobs</h5>
-            <p class="card-text display-4">8</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card bg-success text-white">
-          <div class="card-body">
-            <h5 class="card-title">Companies Interested</h5>
-            <p class="card-text display-4">5</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card bg-info text-white">
-          <div class="card-body">
-            <h5 class="card-title">Chats with Recruiters</h5>
-            <p class="card-text display-4">3</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="col-lg-8">
-        <div class="card mb-4">
-          <div class="card-header d-flex justify-content-between align-items-center">
-            <h5 class="mb-0">Trending Job Listings</h5>
-            <a href="#" class="btn btn-sm btn-primary">View All</a>
-          </div>
-          <div class="card-body">
-            <div class="list-group">
-              <a href="#" class="list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">Software Engineer - TechCorp</h5>
-                  <small>Match: 95%</small>
+                <!-- Search Bar and User Dropdown -->
+                <div class="d-flex align-items-center">
+
+                    <!-- Search Icon -->
+                    <button class="btn btn-link text-white" id="search-button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <!-- User Dropdown -->
+                    <div class="nav-item dropdown user-dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="assets/images/user-profile.png" alt="User Profile" class="profile-image">
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="#">Settings</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <p class="mb-1">Exciting opportunity for backend development in Python and Node.js.</p>
-                <small>Remote • Full-Time</small>
-              </a>
-              <a href="#" class="list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">UI/UX Designer - DesignHub</h5>
-                  <small>Match: 90%</small>
-                </div>
-                <p class="mb-1">Seeking creative designers for mobile and web applications.</p>
-                <small>New York, NY • Full-Time</small>
-              </a>
-              <a href="#" class="list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">Data Scientist - AI Solutions</h5>
-                  <small>Match: 88%</small>
-                </div>
-                <p class="mb-1">Work on cutting-edge AI and machine learning models.</p>
-                <small>San Francisco, CA • Hybrid</small>
-              </a>
             </div>
-          </div>
         </div>
-      </div>
-      
-      <div class="col-lg-4">
-        <div class="card mb-4">
-          <div class="card-header">
-            <h5 class="mb-0">Recent Activity</h5>
-          </div>
-          <div class="card-body p-0">
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">
-                <small class="text-muted">1 hour ago</small>
-                <p class="mb-0">New message from TechCorp recruiter</p>
-              </li>
-              <li class="list-group-item">
-                <small class="text-muted">Yesterday</small>
-                <p class="mb-0">Application submitted to DesignHub</p>
-              </li>
-              <li class="list-group-item">
-                <small class="text-muted">2 days ago</small>
-                <p class="mb-0">Interview scheduled with AI Solutions</p>
-              </li>
-            </ul>
-          </div>
-          <div class="card-footer text-center">
-            <a href="#" class="text-decoration-none">View all activity</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    </nav>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <div class="container py-5">
+        <h1 class="mb-4">Developer Dashboard</h1>
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Applied Projects</h5>
+                        <p class="card-text display-4">8</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Companies Interested</h5>
+                        <p class="card-text display-4">5</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Chats with Recruiters</h5>
+                        <p class="card-text display-4">3</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content: Trending Project Listings and Recent Activity -->
+        <div class="row">
+            <!-- Trending Project Listings -->
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Trending Project Listings</h5>
+                        <a href="#" class="btn btn-sm btn-primary">View All</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group">
+                            <!-- Example of a detailed project listing -->
+                            <div class="list-group-item list-group-item-action">
+                                <div class="project-post">
+                                    <div class="project-header">
+                                        <h5 class="project-title">AI Project - TechCorp</h5>
+                                        <small>Match: 95%</small>
+                                    </div>
+                                    <div class="project-description">
+                                        <p>Exciting opportunity for backend development in Python and Node.js. Work on cutting-edge AI models and collaborate with a team of
+                                            experts.</p>
+                                    </div>
+                                    <div class="project-tags">
+                                        <span class="tag">AI</span>
+                                        <span class="tag">Machine Learning</span>
+                                        <span class="tag">Python</span>
+                                    </div>
+                                    <div class="project-footer">
+                                        <small>Remote • Full-Time</small>
+                                        <button class="btn btn-sm btn-primary">Apply Now</button>
+                                    </div>
+                                </div>
+                            </div>... <!-- More listings -->
+                            <div class="list-group-item list-group-item-action">
+                                <div class="project-post">
+                                    <div class="project-header">
+                                        <h5 class="project-title">UI/UX Designer - DesignHub</h5>
+                                        <small>Match: 90%</small>
+                                    </div>
+                                    <div class="project-description">
+                                        <p>Seeking creative designers for mobile and web applications. Collaborate with cross-functional teams to deliver user-centric designs.</p>
+                                    </div>
+                                    <div class="project-tags">
+                                        <span class="tag">UI/UX</span>
+                                        <span class="tag">Design</span>
+                                        <span class="tag">Creative</span>
+                                    </div>
+                                    <div class="project-footer">
+                                        <small>New York, NY • Full-Time</small>
+                                        <button class="btn btn-sm btn-primary">Apply Now</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Additional listings -->
+                            <div class="list-group-item list-group-item-action">
+                                <div class="project-post">
+                                    <div class="project-header">
+                                        <h5 class="project-title">Data Scientist - AI Solutions</h5>
+                                        <small>Match: 88%</small>
+                                    </div>
+                                    <div class="project-description">
+                                        <p>Work on cutting-edge AI and machine learning models. Collaborate with a team of experts to drive business insights.</p>
+                                    </div>
+                                    <div class="project-tags">
+                                        <span class="tag">Data Science</span>
+                                        <span class="tag">AI</span>
+                                        <span class="tag">Machine Learning</span>
+                                    </div>
+                                    <div class="project-footer">
+                                        <small>San Francisco, CA • Hybrid</small>
+                                        <button class="btn btn-sm btn-primary">Apply Now</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- More listings -->
+                            <div class="list-group-item list-group-item-action">
+                                <div class="project-post">
+                                    <div class="project-header">
+                                        <h5 class="project-title">Generative AI Engineer - MetaMind</h5>
+                                        <small>Match: 92%</small>
+                                    </div>
+                                    <div class="project-description">
+                                        <p>Develop innovative AI models for content generation. Work with a team of experts to push the boundaries of AI capabilities.</p>
+                                    </div>
+                                    <div class="project-tags">
+                                        <span class="tag">Generative AI</span>
+                                        <span class="tag">Machine Learning</span>
+                                        <span class="tag">Content Generation</span>
+                                    </div>
+                                    <div class="project-footer">
+                                        <small>Remote • Full-Time</small>
+                                        <button class="btn btn-sm btn-primary">Apply Now</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="list-group-item list-group-item-action">
+                                <div class="project-post">
+                                    <div class="project-header">
+                                        <h5 class="project-title">Quantum Computing Researcher - QuantumTech</h5>
+                                        <small>Match: 85%</small>
+                                    </div>
+                                    <div class="project-description">
+                                        <p>Contribute to groundbreaking research in quantum computing. Collaborate with a team of experts to develop new quantum algorithms.</p>
+                                    </div>
+                                    <div class="project-tags">
+                                        <span class="tag">Quantum Computing</span>
+                                        <span class="tag">Research</span>
+                                        <span class="tag">Algorithms</span>
+                                    </div>
+                                    <div class="project-footer">
+                                        <small>Cambridge, UK • Full-Time</small>
+                                        <button class="btn btn-sm btn-primary">Apply Now</button>
+                                    </div>
+                                </div>
+                            </div>... <div class="list-group-item list-group-item-action">
+                                <div class="project-post">
+                                    <div class="project-header">
+                                        <h5 class="project-title">Bioprinting Engineer - CELLINK</h5>
+                                        <small>Match: 80%</small>
+                                    </div>
+                                    <div class="project-description">
+                                        <p>Develop innovative bioprinting solutions for medical applications. Work with a team to create complex human tissues.</p>
+                                    </div>
+                                    <div class="project-tags">
+                                        <span class="tag">Bioprinting</span>
+                                        <span class="tag">Medical</span>
+                                        <span class="tag">Tissue Engineering</span>
+                                    </div>
+                                    <div class="project-footer">
+                                        <small>Stockholm, Sweden • Full-Time</small>
+                                        <button class="btn btn-sm btn-primary">Apply Now</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="list-group-item list-group-item-action">
+                                <div class="project-post">
+                                    <div class="project-header">
+                                        <h5 class="project-title">Autonomous Vehicle Engineer - Aurora</h5>
+                                        <small>Match: 90%</small>
+                                    </div>
+                                    <div class="project-description">
+                                        <p>Develop autonomous driving solutions for freight and passenger transportation. Collaborate with a team of experts to enhance safety and
+                                            efficiency.</p>
+                                    </div>
+                                    <div class="project-tags">
+                                        <span class="tag">Autonomous Vehicles</span>
+                                        <span class="tag">Transportation</span>
+                                        <span class="tag">Safety</span>
+                                    </div>
+                                    <div class="project-footer">
+                                        <small>Palo Alto, CA • Full-Time</small>
+                                        <button class="btn btn-sm btn-primary">Apply Now</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Removed unnecessary project listings -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity Section -->
+            <div class="col-lg-4">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0">Recent Activity</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <small class="text-muted">1 hour ago</small>
+                                <p class="mb-0">New message from TechCorp recruiter</p>
+                            </li>
+                            <li class="list-group-item">
+                                <small class="text-muted">Yesterday</small>
+                                <p class="mb-0">Application submitted to DesignHub</p>
+                            </li>
+                            <li class="list-group-item">
+                                <small class="text-muted">2 days ago</small>
+                                <p class="mb-0">Interview scheduled with AI Solutions</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="#" class="text-decoration-none">View all activity</a>
+                    </div>
+                </div>
+
+                <!-- Analytical Data Cards -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0">Application Success Rate</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="successRateChart" width="400" height="200"></canvas>
+                        <p>Interview Rate: 60%</p>
+                        <small class="text-muted">Based on applications in the last month.</small>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0">Average Response Time</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="responseTimeChart" width="400" height="200"></canvas>
+                        <p>Avg. Response Time: 2 days</p>
+                        <small class="text-muted">Average time for recruiters to respond.</small>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0">Skill Match Analysis</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="skillMatchChart" width="400" height="200"></canvas>
+                        <small class="text-muted">Top skills match for recent applications.</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchButton = document.getElementById('search-button');
+            const searchOverlay = document.getElementById('searchOverlay');
+            const closeSearch = document.getElementById('closeSearch');
+
+            // Function to open search overlay
+            function openSearch() {
+                searchOverlay.style.display = 'flex';
+                document.getElementById('search-input-modal').focus();
+            }
+
+            // Function to close search overlay
+            function closeSearchOverlay() {
+                searchOverlay.style.display = 'none';
+            }
+
+            // Event listeners
+            searchButton.addEventListener('click', function(event) {
+                event.preventDefault();
+                openSearch();
+            });
+
+            closeSearch.addEventListener('click', function() {
+                closeSearchOverlay();
+            });
+
+            // Close the modal if the user clicks outside of it.
+            window.addEventListener('click', function(event) {
+                if (event.target == searchOverlay) {
+                    closeSearchOverlay();
+                }
+            });
+
+            // Prevent the modal from closing when clicking inside it.
+            document.querySelector('.search-box').addEventListener('click', function(event) {
+                event.stopPropagation(); // Stop the click event from bubbling up to the window
+            });
+        });
+        // Register Chart.js components
+        Chart.register(
+            Chart.BarController,
+            Chart.BarElement,
+            Chart.CategoryScale,
+            Chart.LinearScale
+        );
+        // Helper function to generate different shades of blue
+        function getShadesOfBlue(count) {
+            const baseColor = [0, 123, 255]; // RGB for #007bff
+            const shades = [];
+            for (let i = 0; i < count; i++) {
+                const factor = 0.7 + (0.3 * i / (count - 1)); // Vary the factor to lighten the base color
+                const r = Math.round(baseColor[0] * factor);
+                const g = Math.round(baseColor[1] * factor);
+                const b = Math.round(baseColor[2] * factor);
+                shades.push(`rgb(${r}, ${g}, ${b})`);
+            }
+            return shades;
+        }
+        // Application Success Rate Chart
+        const successRateCtx = document.getElementById('successRateChart').getContext('2d');
+        const successRateChart = new Chart(successRateCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Applications'],
+                datasets: [{
+                    label: 'Interview Rate',
+                    data: [60], // Data for application
+                    backgroundColor: '#007bff',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
+        });
+
+        // Average Response Time Chart
+        const responseTimeCtx = document.getElementById('responseTimeChart').getContext('2d');
+        const responseTimeChart = new Chart(responseTimeCtx, {
+            type: 'line',
+            data: {
+                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                datasets: [{
+                    label: 'Response Time (Days)',
+                    data: [4, 2, 3, 1], // Data for response time in days
+                    borderColor: '#007bff',
+                    borderWidth: 1,
+                    fill: false
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Skill Match Analysis Chart
+        const skillMatchCtx = document.getElementById('skillMatchChart').getContext('2d');
+        const skillMatchChart = new Chart(skillMatchCtx, {
+            type: 'bar',
+            data: {
+                labels: ['JavaScript', 'React', 'Node.js', 'HTML/CSS', 'SQL'],
+                datasets: [{
+                    label: 'Skill Match',
+                    data: [90, 85, 80, 75, 70],
+                    backgroundColor: '#007bff',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                indexAxis: 'y', // ADDED: Make the chart horizontal
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
