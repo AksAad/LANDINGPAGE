@@ -1,77 +1,66 @@
-<!-- investor/dashboard.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Investor Dashboard - SynergySwipe</title>
-  <!-- Bootstrap CSS -->
+  <title>Employee Dashboard - SynergySwipe</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
-      <a class="navbar-brand" href="../index.html">Synergy<span class="fw-bold">Swipe</span></a>
+      <a class="navbar-brand" href="#">Synergy<span class="fw-bold">Swipe</span></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link active" href="#">Dashboard</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Startups</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Investments</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Messages</a>
-          </li>
+          <li class="nav-item"><a class="nav-link active" href="#">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Job Listings</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Messages</a></li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-              My Account
-            </a>
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">My Account</a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="#">Profile</a></li>
               <li><a class="dropdown-item" href="#">Settings</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="../login.html">Logout</a></li>
+              <li><a class="dropdown-item" href="#">Logout</a></li>
             </ul>
           </li>
         </ul>
+        <form class="d-flex ms-3">
+          <input class="form-control me-2" type="search" placeholder="Search jobs...">
+          <button class="btn btn-light" type="submit">Search</button>
+        </form>
       </div>
     </div>
   </nav>
 
   <div class="container py-5">
-    <h1 class="mb-4">Investor Dashboard</h1>
-    
+    <h1 class="mb-4">Employee Dashboard</h1>
     <div class="row mb-4">
-      <div class="col-md-4 mb-3">
+      <div class="col-md-4">
         <div class="card bg-primary text-white">
           <div class="card-body">
-            <h5 class="card-title">Active Investments</h5>
-            <p class="card-text display-4">12</p>
+            <h5 class="card-title">Applied Jobs</h5>
+            <p class="card-text display-4">8</p>
           </div>
         </div>
       </div>
-      <div class="col-md-4 mb-3">
+      <div class="col-md-4">
         <div class="card bg-success text-white">
           <div class="card-body">
-            <h5 class="card-title">Total Invested</h5>
-            <p class="card-text display-4">$750K</p>
+            <h5 class="card-title">Companies Interested</h5>
+            <p class="card-text display-4">5</p>
           </div>
         </div>
       </div>
-      <div class="col-md-4 mb-3">
+      <div class="col-md-4">
         <div class="card bg-info text-white">
           <div class="card-body">
-            <h5 class="card-title">Current ROI</h5>
-            <p class="card-text display-4">18.7%</p>
+            <h5 class="card-title">Chats with Recruiters</h5>
+            <p class="card-text display-4">3</p>
           </div>
         </div>
       </div>
@@ -81,34 +70,34 @@
       <div class="col-lg-8">
         <div class="card mb-4">
           <div class="card-header d-flex justify-content-between align-items-center">
-            <h5 class="mb-0">Top Startup Matches</h5>
+            <h5 class="mb-0">Trending Job Listings</h5>
             <a href="#" class="btn btn-sm btn-primary">View All</a>
           </div>
           <div class="card-body">
             <div class="list-group">
               <a href="#" class="list-group-item list-group-item-action">
                 <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">EcoTech Solutions</h5>
-                  <small>Match: 92%</small>
+                  <h5 class="mb-1">Software Engineer - TechCorp</h5>
+                  <small>Match: 95%</small>
                 </div>
-                <p class="mb-1">Sustainable energy management platform for commercial buildings.</p>
-                <small>Seed Stage • $1.2M funding goal</small>
+                <p class="mb-1">Exciting opportunity for backend development in Python and Node.js.</p>
+                <small>Remote • Full-Time</small>
               </a>
               <a href="#" class="list-group-item list-group-item-action">
                 <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">HealthAI</h5>
-                  <small>Match: 87%</small>
+                  <h5 class="mb-1">UI/UX Designer - DesignHub</h5>
+                  <small>Match: 90%</small>
                 </div>
-                <p class="mb-1">AI-powered diagnostic tool for healthcare professionals.</p>
-                <small>Series A • $5M funding goal</small>
+                <p class="mb-1">Seeking creative designers for mobile and web applications.</p>
+                <small>New York, NY • Full-Time</small>
               </a>
               <a href="#" class="list-group-item list-group-item-action">
                 <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">FinTrack</h5>
-                  <small>Match: 85%</small>
+                  <h5 class="mb-1">Data Scientist - AI Solutions</h5>
+                  <small>Match: 88%</small>
                 </div>
-                <p class="mb-1">Personal finance platform with automated investment strategies.</p>
-                <small>Seed Stage • $800K funding goal</small>
+                <p class="mb-1">Work on cutting-edge AI and machine learning models.</p>
+                <small>San Francisco, CA • Hybrid</small>
               </a>
             </div>
           </div>
@@ -123,20 +112,16 @@
           <div class="card-body p-0">
             <ul class="list-group list-group-flush">
               <li class="list-group-item">
-                <small class="text-muted">2 hours ago</small>
-                <p class="mb-0">New message from EcoTech Solutions</p>
+                <small class="text-muted">1 hour ago</small>
+                <p class="mb-0">New message from TechCorp recruiter</p>
               </li>
               <li class="list-group-item">
                 <small class="text-muted">Yesterday</small>
-                <p class="mb-0">Updated pitch deck from HealthAI</p>
+                <p class="mb-0">Application submitted to DesignHub</p>
               </li>
               <li class="list-group-item">
                 <small class="text-muted">2 days ago</small>
-                <p class="mb-0">Investment proposal submitted to FinTrack</p>
-              </li>
-              <li class="list-group-item">
-                <small class="text-muted">3 days ago</small>
-                <p class="mb-0">QuickServe reached their funding goal</p>
+                <p class="mb-0">Interview scheduled with AI Solutions</p>
               </li>
             </ul>
           </div>
@@ -148,16 +133,6 @@
     </div>
   </div>
 
-  <!-- Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
-<!-- entrepreneur/dashboard.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Entrepreneur Dashboard - SynergySwipe</title>
-  <!-- Bootstrap CSS -->

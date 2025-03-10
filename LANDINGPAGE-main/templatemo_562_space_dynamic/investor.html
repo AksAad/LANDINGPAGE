@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InvestMatch - Connect Entrepreneurs & Investors</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    :root {
+      --primary-blue: #2c7be5;
+      --light-blue: #90caf9;
+      --bright-blue: #00a8e8;
+      --pale-blue: #e3f2fd;
+      --dark-gray: #333333;
+    }
+    
+    body {
+      background-color: var(--pale-blue);
+      color: var(--dark-gray);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: var(--primary-blue);
+      border-bottom: 1px solid var(--light-blue);
+      color: white;
+    }
+    
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: white;
+      background: var(--bright-blue);
+      width: 150px;
+      height: 45px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    
+    .nav-menu {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    .nav-button {
+      padding: 0.5rem 1rem;
+      border: none;
+      background: none;
+      color: white;
+      cursor: pointer;
+      position: relative;
+      font-weight: 500;
+    }
+    
+    .nav-button:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 50%;
+      background-color: white;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-button:hover:after {
+      width: 100%;
+      left: 0;
+    }
+    
+    .nav-button.active {
+      color: white;
+      font-weight: bold;
+    }
+    
+    .nav-button.active:after {
+      width: 100%;
+      left: 0;
+    }
+    
+    .profile-button {
+      background-color: var(--bright-blue);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: white;
+    }
+    
+    .profile-button:hover {
+      background-color: var(--light-blue);
+    }
+    
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    
+    .card-container {
+      position: relative;
+      width: 340px;
+      height: 500px;
+      max-width: 100%;
+      perspective: 1000px;
+      margin-bottom: 2rem;
+    }
+    
+    .card {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 15px;
+      background-color: var(--bright-blue);
+      color: white;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.5s, top 0.5s;
+      cursor: pointer;
+      padding: 1.5rem;
+    }
+    
+    .card-background {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 15px;
+      background-color: var(--light-blue);
+      z-index: -1;
+      top: 10px;
+      left: 10px;
+    }
+    
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+    
+    .card-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+    }
+    
+    .card-footer {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .action-buttons {
+      display: flex;
+      justify-content: space-evenly;
+      width: 80%;
+      margin: 0 auto;
+    }
+    
+    .action-button {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    
+    .action-button:hover {
+      transform: scale(1.1);
+    }
+    
+    .reject {
+      background-color: var(--dark-gray);
+      color: white;
+    }
+    
+    .info {
+      background-color: var(--primary-blue);
+      color: white;
+    }
+    
+    .like {
+      background-color: var(--bright-blue);
+      color: white;
+    }
+    
+    .swipe-left {
+      transform: translateX(-150%) rotate(-30deg);
+      opacity: 0;
+    }
+    
+    .swipe-right {
+      transform: translateX(150%) rotate(30deg);
+      opacity: 0;
+    }
+    
+    .footer {
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem 2rem;
+      background: white;
+      border-top: 1px solid var(--light-blue);
+    }
+    
+    .project-details {
+      margin-bottom: 1rem;
+    }
+    
+    .details-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      color: var(--primary-blue);
+    }
+    
+    .details-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    
+    .details-content {
+      font-size: 0.9rem;
+      color: var(--dark-gray);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    
+    .details-content.expanded {
+      max-height: 200px;
+    }
+    
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0.5rem 0;
+    }
+    
+    .tag {
+      display: inline-block;
+      background-color: var(--light-blue);
+      color: var(--dark-gray);
+      padding: 0.3rem 0.6rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+    }
+    
+    .footer-actions {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 1rem;
+      border-top: 1px solid var(--pale-blue);
+    }
+    
+    .footer-button {
+      padding: 0.7rem 1.2rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+    
+    .chat-button {
+      background-color: var(--primary-blue);
+      color: white;
+    }
+    
+    .chat-button:hover {
+      background-color: #2468c5;
+    }
+    
+    .invest-button {
+      background-color: var(--bright-blue);
+      color: white;
+    }
+    
+    .invest-button:hover {
+      background-color: #0095d1;
+    }
+    
+    .domain-button {
+      background-color: var(--light-blue);
+      color: var(--dark-gray);
+    }
+    
+    .domain-button:hover {
+      background-color: #7bb8e8;
+    }
+    
+    .toggle-details {
+      background: none;
+      border: none;
+      color: var(--primary-blue);
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">SynergySwipe</div>
+    <div class="nav-menu">
+      <button class="nav-button active">Discover</button>
+      <button class="nav-button">Matches</button>
+      <button class="nav-button">Messages</button>
+      <button class="nav-button">Saved</button>
+    </div>
+    <div class="profile-button">P</div>
+  </div>
+  
+  <div class="main">
+    <div class="card-container">
+      <div class="card-background"></div>
+      <div class="card" id="current-card">
+        <div class="card-header">
+          <div>in</div>
+          <div>•••</div>
+        </div>
+        
+        <div class="card-title">THE IDEA</div>
+        
+        <div class="card-footer">
+          <div class="info-icon">i</div>
+          <div class="like-icon">♥</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="action-buttons">
+      <div class="action-button reject" onclick="swipeLeft()">✖</div>
+      <div class="action-button info" onclick="toggleDetails()">i</div>
+      <div class="action-button like" onclick="swipeRight()">✓</div>
+    </div>
+  </div>
+  
+  <div class="footer" id="project-footer">
+    <div class="project-details">
+      <div class="details-header">
+        <div class="details-title">THE IDEA</div>
+        <button class="toggle-details" onclick="toggleDetails()">+</button>
+      </div>
+      <div class="details-content" id="details-content">
+        <p>A revolutionary platform for connecting local service providers with customers in real-time.</p>
+        
+        <div class="tags">
+          <span class="tag">Tech</span>
+          <span class="tag">Services</span>
+          <span class="tag">On-Demand</span>
+        </div>
+        
+        <p>• Founded: 2024<br>
+        • Team: 5 members<br>
+        • Stage: Seed Round<br>
+        • Seeking: ₹50,000<br>
+        • Traction: 1,000+ Beta Users</p>
+      </div>
+    </div>
+    
+    <div class="footer-actions">
+      <button class="footer-button chat-button">Chat with Entrepreneur</button>
+      <button class="footer-button invest-button">Invest</button>
+      <button class="footer-button domain-button">Change Domain</button>
+    </div>
+  </div>
+  
+  <script>
+    // Sample data for demonstration
+    const ideas = [
+      {
+        title: "THE IDEA",
+        category: "Tech Startup",
+        description: "A revolutionary platform for connecting local service providers with customers in real-time.",
+        funding: "Seed - ₹50,000",
+        tags: ["Tech", "Services", "On-Demand"],
+        details: "• Founded: 2024<br>• Team: 5 members<br>• Stage: Seed Round<br>• Seeking: ₹50,000<br>• Traction: 1,000+ Beta Users"
+      },
+      {
+        title: "GREEN ENERGY",
+        category: "CleanTech",
+        description: "Sustainable energy solutions for residential buildings using innovative solar technology.",
+        funding: "Series A - ₹2,00,000",
+        tags: ["CleanTech", "Sustainability", "Energy"],
+        details: "• Founded: 2022<br>• Team: 12 members<br>• Stage: Series A<br>• Seeking: ₹2,00,000<br>• Traction: ₹1,50L MRR"
+      },
+      {
+        title: "HEALTH APP",
+        category: "HealthTech",
+        description: "AI-powered health monitoring application that provides personalized wellness recommendations.",
+        funding: "Pre-seed - ₹1,00,000",
+        tags: ["HealthTech", "AI", "Wellness"],
+        details: "• Founded: 2023<br>• Team: 3 members<br>• Stage: Pre-seed<br>• Seeking: ₹1,00,000<br>• Traction: 500 Early Users"
+      },
+      {
+        title: "FINTECH SOLUTION",
+        category: "Financial Technology",
+        description: "Blockchain-based payment platform for cross-border transactions with minimal fees.",
+        funding: "Seed - ₹1,00,000",
+        tags: ["FinTech", "Blockchain", "Payments"],
+        details: "• Founded: 2023<br>• Team: 7 members<br>• Stage: Seed Round<br>• Seeking: ₹1,00,000<br>• Traction: ₹20K MRR"
+      }
+    ];
+    
+    let currentIndex = 0;
+    let detailsExpanded = false;
+    
+    function swipeLeft() {
+      document.getElementById('current-card').classList.add('swipe-left');
+      setTimeout(loadNextCard, 300);
+    }
+    
+    function swipeRight() {
+      document.getElementById('current-card').classList.add('swipe-right');
+      setTimeout(loadNextCard, 300);
+    }
+    
+    function loadNextCard() {
+      currentIndex = (currentIndex + 1) % ideas.length;
+      updateCardAndDetails();
+      
+      const card = document.getElementById('current-card');
+      card.classList.remove('swipe-left', 'swipe-right');
+      
+      // Reset card position with a slight delay
+      setTimeout(() => {
+        card.style.transform = 'none';
+        card.style.opacity = '1';
+      }, 50);
+      
+      // Close details if open
+      if (detailsExpanded) {
+        toggleDetails();
+      }
+    }
+    
+    function updateCardAndDetails() {
+      const idea = ideas[currentIndex];
+      
+      // Update card title
+      document.getElementById('current-card').querySelector('.card-title').textContent = idea.title;
+      
+      // Update footer details
+      document.querySelector('.details-title').textContent = idea.title;
+      
+      const detailsContent = document.getElementById('details-content');
+      detailsContent.innerHTML = `
+        <p>${idea.description}</p>
+        
+        <div class="tags">
+          ${idea.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+        </div>
+        
+        <p>${idea.details}</p>
+      `;
+    }
+    
+    function toggleDetails() {
+      const detailsContent = document.getElementById('details-content');
+      const toggleButton = document.querySelector('.toggle-details');
+      
+      detailsExpanded = !detailsExpanded;
+      
+      if (detailsExpanded) {
+        detailsContent.classList.add('expanded');
+        toggleButton.textContent = '−';
+      } else {
+        detailsContent.classList.remove('expanded');
+        toggleButton.textContent = '+';
+      }
+    }
+    
+    // Initialize the first card
+    updateCardAndDetails();
+  </script>
+</body>
+</html>

@@ -278,3 +278,34 @@ document.addEventListener("DOMContentLoaded", () => {
   // Add console log to verify script is loaded
   console.log("Login form script loaded successfully")
 })
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    let selectedRole = ""; // Store the selected role
+
+    // Select all role buttons
+    const roleButtons = document.querySelectorAll(".role-btn");
+
+    roleButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            selectedRole = this.getAttribute("data-role"); // Update selected role
+        });
+    });
+
+    // Handle login form submission
+    const loginForm = document.getElementById("login-form");
+
+    if (loginForm) {
+        loginForm.addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent form submission for now
+
+            if (selectedRole === "investor") {
+                window.location.href = "investor.html"; // Redirect to investor page
+            } else if (selectedRole === "entrepreneur") {
+                window.location.href = "dashboard.html"; // Redirect to entrepreneur dashboard
+            } else {
+                alert("Please select a role before signing in.");
+            }
+        });
+    }
+});
