@@ -12,6 +12,17 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     
+    body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom right, #D506B6, #6DA8D3, #00EBCC);
+    z-index: -1; 
+    }
+
     :root {
       --primary-blue: #2c7be5;
       --light-blue: #90caf9;
@@ -42,9 +53,9 @@
       font-size: 1.8rem;
       font-weight: bold;
       color: white;
-      background: var(--bright-blue);
-      width: 150px;
-      height: 45px;
+      background: black;
+      width: 220px;
+      height: 50px;
       border-radius: 8px;
       display: flex;
       align-items: center;
@@ -182,8 +193,8 @@
     }
     
     .action-button {
-      width: 60px;
-      height: 60px;
+      width: 72px;
+      height: 72px; 
       border-radius: 50%;
       display: flex;
       justify-content: center;
@@ -197,20 +208,53 @@
     .action-button:hover {
       transform: scale(1.1);
     }
-    
-    .reject {
-      background-color: var(--dark-gray);
+    .action-button-like{
+      margin-top: -250px;
+      width: 72px;
+      height: 72px; 
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: transform 0.2s;
+      background-color: lawngreen;
       color: white;
+      transform: scale(1.1);
+
     }
-    
-    .info {
-      background-color: var(--primary-blue);
+    .action-button-reject{
+      margin-top: -250px;
+      width: 72px;
+      height: 72px; 
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: transform 0.2s;
+      background-color: red;
       color: white;
+      transform: scale(1.1);
     }
-    
-    .like {
-      background-color: var(--bright-blue);
+    .action-button-info{
+      width: 72px;
+      height: 72px; 
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: transform 0.2s;
+      background-color: black;
       color: white;
+      transform: scale(1.1);
     }
     
     .swipe-left {
@@ -249,11 +293,12 @@
     }
     
     .details-content {
-      font-size: 0.9rem;
-      color: var(--dark-gray);
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
+
+    font-size: 0.9rem;
+    color: var(--dark-gray);
+    max-height: 0; /* Collapsed by default */
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out; /* Smooth transition */
     }
     
     .details-content.expanded {
@@ -326,11 +371,115 @@
       cursor: pointer;
       font-size: 1.2rem;
     }
+    
+    #chat-sidebar {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 300px;
+      height: 400px;
+      background-color: #f0f2f5;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      font-family: Arial, sans-serif;
+      z-index: 1000;
+    }
+
+    
+    .chat-header {
+      background-color: #075E54;
+      color: white;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    
+    .chat-body {
+      flex-grow: 1;
+      padding: 10px;
+      overflow-y: auto;
+      background-color: #e5ddd5;
+      display: flex;
+      flex-direction: column;
+    }
+
+    
+    .message {
+      max-width: 75%;
+      padding: 8px;
+      margin-bottom: 8px;
+      border-radius: 10px;
+      font-size:14px;
+      position: relative;
+    }
+
+    .message.received {
+      background-color: #ffffff;
+      align-self: flex-start;
+    }
+
+    .message.sent {
+      background-color: #dcf8c6;
+      align-self: flex-end;
+    }
+
+    .timestamp {
+      font-size:10px; 
+      color:#888; 
+      margin-left:5px; 
+    }
+
+    .chat-footer {
+      display:flex; 
+      padding:8px; 
+      background-color:#f0f2f5; 
+      border-top:1px solid #ddd; 
+    }
+
+    .chat-footer input {
+      flex-grow:1; 
+      padding:6px; 
+      border-radius:20px; 
+      border:none; 
+      outline:none; 
+      padding-left:12px; 
+    }
+
+    .chat-footer button {
+      margin-left:6px; 
+      background-color:#075E54; 
+      color:white; 
+      border:none; 
+      border-radius:50%; 
+      width:36px; 
+      height:36px; 
+      cursor:pointer; 
+    }
+
+    
+    #toggle-chat-btn {
+      position:absolute; 
+      right:-60px; 
+      top:20px; 
+      transform:rotate(-90deg); 
+      transform-origin:left top; 
+      background-color:#075E54; 
+      color:white; 
+      border:none; 
+      padding:8px 12px; 
+      cursor:pointer; 
+      border-radius:4px;  
+    }
   </style>
+
 </head>
 <body>
   <div class="header">
-    <div class="logo">SynergySwipe</div>
+    <div class="logo" href="index.html">SynergySwipe</div>
     <div class="nav-menu">
       <button class="nav-button active">Discover</button>
       <button class="nav-button">Matches</button>
@@ -345,7 +494,7 @@
       <div class="card-background"></div>
       <div class="card" id="current-card">
         <div class="card-header">
-          <div>in</div>
+          <div></div>
           <div>•••</div>
         </div>
         
@@ -353,15 +502,15 @@
         
         <div class="card-footer">
           <div class="info-icon">i</div>
-          <div class="like-icon">♥</div>
+          <div class="like-icon"></div>
         </div>
       </div>
     </div>
     
     <div class="action-buttons">
-      <div class="action-button reject" onclick="swipeLeft()">✖</div>
-      <div class="action-button info" onclick="toggleDetails()">i</div>
-      <div class="action-button like" onclick="swipeRight()">✓</div>
+      <div class="action-button-reject" onclick="swipeLeft()">✖</div>
+      <div class="action-button-info" onclick="toggleDetails()">i</div>
+      <div class="action-button-like" onclick="swipeRight()">✓</div>
     </div>
   </div>
   
@@ -386,6 +535,24 @@
         • Seeking: ₹50,000<br>
         • Traction: 1,000+ Beta Users</p>
       </div>
+    </div>
+    <div id="chat-sidebar">
+  
+      <button id="toggle-chat-btn">Chat</button>
+      
+      <div class="chat-header">Investor Support</div>
+      
+      <div class="chat-body">
+          <div class="message received">Hello! How can we assist you today?<span class="timestamp">6:55 PM</span></div>
+          <div class="message sent">I have a query about my investments.<span class="timestamp">6:56 PM</span></div>
+          <!-- Add more messages dynamically here -->
+      </div>
+      
+      <div class="chat-footer">
+          <input type="text" placeholder="Type your message...">
+          <button id="send-btn">➤</button>
+      </div>
+    
     </div>
     
     <div class="footer-actions">
@@ -484,21 +651,57 @@
         <p>${idea.details}</p>
       `;
     }
-    
-    function toggleDetails() {
-      const detailsContent = document.getElementById('details-content');
-      const toggleButton = document.querySelector('.toggle-details');
-      
-      detailsExpanded = !detailsExpanded;
-      
-      if (detailsExpanded) {
+    window.onload = function () {
+    const detailsContent = document.getElementById('details-content');
+    const toggleButton = document.querySelector('.toggle-details');
+
+    // Ensure the content is expanded initially
+    detailsContent.classList.add('expanded');
+    toggleButton.textContent = '−';
+  };
+  
+  function toggleDetails() {
+    const detailsContent = document.getElementById('details-content');
+    const toggleButton = document.querySelector('.toggle-details');
+
+    detailsExpanded = !detailsExpanded;
+
+    if (detailsExpanded) {
         detailsContent.classList.add('expanded');
         toggleButton.textContent = '−';
-      } else {
+    } else {
         detailsContent.classList.remove('expanded');
         toggleButton.textContent = '+';
-      }
     }
+  }
+  document.getElementById('toggle-chat-btn').addEventListener('click', function() {
+   const chatSidebar = document.getElementById('chat-sidebar');
+   if(chatSidebar.style.left === '0px' || chatSidebar.style.left === ''){
+     chatSidebar.style.left = '-300px'; // Hide sidebar
+   } else {
+     chatSidebar.style.left = '0px'; // Show sidebar
+   }
+});
+
+  // Initially hide the sidebar partially
+  document.getElementById('chat-sidebar').style.left = '-300px';
+
+  // Simple send message functionality (optional)
+  document.getElementById('send-btn').addEventListener('click', function(){
+    const input = document.querySelector('.chat-footer input');
+    const chatBody = document.querySelector('.chat-body');
+    
+    if(input.value.trim() !== ''){
+      const newMsg = document.createElement('div');
+      newMsg.className = 'message sent';
+      const currentTime = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+      newMsg.innerHTML = input.value + '<span class="timestamp">'+currentTime+'</span>';
+      chatBody.appendChild(newMsg);
+      chatBody.scrollTop = chatBody.scrollHeight;
+      input.value='';
+    }
+  });
+
     
     // Initialize the first card
     updateCardAndDetails();
